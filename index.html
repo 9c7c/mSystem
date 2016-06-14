@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+
+  <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame 
+       Remove this if you use the .htaccess -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>index</title>
+  <meta name="description" content="Sinbad Team">
+  <meta name="author" content="Bigfish">
+
+  <meta name="viewport" content="width=device-width; initial-scale=1.0">
+
+  <!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+	<!-- include bootstrap -->
+	<link rel="stylesheet" href="libs/bootstrap-3.3.5-dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="libs/bootstrap-3.3.5-dist/css/bootstrap-theme.min.css"/>
+	<script src="libs/jquery-3.0.0.min.js"></script>
+	<script src="libs/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+	
+	<!-- include js template -->
+	<script src="libs/template.js"></script>
+	
+	<!-- load personal style/js file -->
+	<link rel="stylesheet" href="css/style.css"/>
+	<script src="js/jquery.js"></script>
+  
+</head>
+
+<body>
+  <div>
+    <header>
+      <div class="jumbotron">
+      	<div class="container">
+		  <h1>Hey, world!</h1>
+		  <p>This is a little web...</p>
+		  <p><a class="btn btn-primary btn-lg" href="#" role="button">STATR</a></p>
+      	</div>
+	  </div>
+    </header>
+    
+	<!-- display products list here -->
+    <div id="productList"></div>
+    <script id="test" type="text/html">
+    <div>
+      <div class="page-header container">
+		  <h1>{{title}} <small>product list</small></h1>
+	  </div>
+	  <div class="container">
+		<ul>
+		    {{each list as value i}}
+		        <li>No. {{i + 1}} ：{{value}}</li>
+		    {{/each}}
+		</ul>
+	  </div>
+    </div>
+	</script>
+
+
+    <footer>
+		<p class="text-center">&copy; Copyright  by Bigfish</p>
+    </footer>
+  </div>
+</body>
+
+<!-- template data here -->
+<script>
+var data = {
+    title: 'HP Tester Plat',
+    list: ['Anguilla IMM', 'Anguilla Blue', 'Anguilla Black', 'Anguilla Auto', 'Aruba', 'Bahamas', 'Baja',
+    		'Hockenheim Auto', 'Hockenheim IMM', ]
+};
+var html = template('test', data);
+document.getElementById('productList').innerHTML = html;
+</script>
+
+</html>
