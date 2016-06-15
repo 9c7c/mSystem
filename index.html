@@ -37,7 +37,7 @@
     <header>
       <div class="jumbotron topShow">
       	<div class="container">
-		  <h1>Hey, world!</h1>
+		  <h1>Hey, m system!</h1>
 		  <p>
 		  	<br />
 		  	生活不止眼前的苟且，还有青山郁郁和锦水汤汤。<br />
@@ -59,21 +59,57 @@
     </div>
     
 	<!-- display products list here -->
-    <div id="productList" style="display: none"></div>
-    <script id="test" type="text/html">
-    <div>
-      <div class="page-header container">
-		  <h1>{{title}} <small>product list</small></h1>
+    <div id="productList" class="productList">
+      <div class="page-header">
+		  <h1 class="container">HP Tester Plat <small>product list</small></h1>
 	  </div>
+	  
 	  <div class="container">
-		<ul>
-		    {{each list as value i}}
-		        <li>No. {{i + 1}} ：{{value}}</li>
-		    {{/each}}
-		</ul>
+	  	<div class="btn-group btn-group-justified" role="group" aria-label="..." id="testerType">
+			<script id="hpType" type="text/html">
+				{{each hp as value i}}
+				  <div class="btn-group" role="group">
+				    <button type="button" class="btn btn-default" id="{{value}}">{{value}}</button>
+				  </div>
+				{{/each}}
+			</script>
+		</div>
+	  </div>
+	  
+	  <div class="panel panel-default container product" id="product">
+		  <div class="panel-body">
+		    <div class="row" id="productShow">
+		    	<script id="productName" type="text/html">
+		    		{{each nickName as value i}}
+				    	<div class="col-xs-6 col-sm-3" style="padding: 10px;">
+					    	<a class="btn btn-default btn-lg btn-block" href="#" role="button" id="{{value}}">{{value}}</a>
+				    	</div>
+		    		{{/each}}
+		    	</script>
+		    </div>
+		  </div>
+	  </div>
+	  
+	  <div class="panel panel-default container" id="binning" style="display: none;">
+	  	<div class="panel-body">
+	  		<div class="row" id="hbinShow">
+	  			<script id="hbin" type="text/html">
+	  				{{each hbin as value i}}
+	  					<div class="col-xs-4 col-sm-2" style="padding: 10px;">
+	  						<a class="btn btn-danger btn-lg btn-block" href="#" role="button" id="{{value}}">HBin {{value}}</a>
+	  					</div>
+	  				{{/each}}
+	  			</script>
+	  		</div>
+	  	</div>
+	  </div>
+	  
+	  <div class="panel panel-default container" id="maintain" style="display: none;">
+	  	<div class="panel-body">
+	  		maintain detail...
+	  	</div>
 	  </div>
     </div>
-	</script>
 
 
     <footer>
@@ -87,12 +123,18 @@
 <!-- template data here -->
 <script>
 var data = {
-    title: 'HP Tester Plat',
-    list: ['Anguilla IMM', 'Anguilla Blue', 'Anguilla Black', 'Anguilla Auto', 'Aruba', 'Bahamas', 'Baja',
-    		'Hockenheim Auto', 'Hockenheim IMM', ]
+    // title: 'HP Tester Plat',
+    nickName: ['Anguilla IMM', 'Anguilla Blue', 'Anguilla Black', 'Anguilla Auto', 'Aruba', 'Bahamas', 'Baja',
+    		'Hockenheim Auto', 'Hockenheim IMM'],
+    hp:['C400','PS800','PS1600'],
+    hbin:[2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
 };
-var html = template('test', data);
-document.getElementById('productList').innerHTML = html;
+var html = template('hpType', data);
+document.getElementById('testerType').innerHTML = html;
+var html=template('productName', data);
+document.getElementById('productShow').innerHTML=html;
+var html = template('hbin', data);
+document.getElementById('hbinShow').innerHTML = html;
 </script>
 
 </html>

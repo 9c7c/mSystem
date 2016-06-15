@@ -13,3 +13,13 @@ footer p{
 	background-color:#28A4C9;
 	color:#FFFFFF;
 }
+
+.productList{
+	display:none;
+	margin-bottom:50px;
+}
+
+.productList .product{
+	display:none;
+	margin-top: 30px;
+}
