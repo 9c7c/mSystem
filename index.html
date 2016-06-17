@@ -37,7 +37,7 @@
     <header>
       <div class="jumbotron topShow">
       	<div class="container">
-		  <h1>Hey, mSystem!</h1>
+		  <h1>Hey, m system!</h1>
 		  <p>
 		  	<br />
 		  	生活不止眼前的苟且，还有青山郁郁和锦水汤汤。<br />
@@ -46,51 +46,67 @@
 			生活不止眼前的苟且，还有青丝绾正和十里红妆。<br />
 			生活不止眼前的苟且，还有金戈铁马和温酒的厨娘。
 		  </p>
-		  <p><a class="btn btn-primary btn-lg" href="#" role="button" id="start">STATR</a></p>
+		  <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button" id="start">STATR</a></p> -->
       	</div>
 	  </div>
     </header>
     
-    <div id="initialShow">
-	    <div class="page-header">
-		  <h1 class="container">Example page header <small>Subtext for header</small></h1>
-		  <p class="container">papapappapp papappap</p>
-		</div>
-    </div>
-    
-	<!-- display products list here -->
-    <div id="productList" style="display: none"></div>
-    <script id="test" type="text/html">
-    <div>
+	<!-- display content here -->
+    <div class="productList">
       <div class="page-header">
-		  <h1 class="container">{{title}} <small>product list</small></h1>
+		  <h1 class="container">HP Tester Plat <small>product list</small></h1>
 	  </div>
+	  
+	  <!-- tester type here -->
 	  <div class="container" id="type">
-	  	<div class="btn-group btn-group-justified" role="group" aria-label="...">
-		  <div class="btn-group" role="group">
-		    <button type="button" class="btn btn-default">C400</button>
-		  </div>
-		  <div class="btn-group" role="group">
-		    <button type="button" class="btn btn-default">PS800</button>
-		  </div>
-		  <div class="btn-group" role="group">
-		    <button type="button" class="btn btn-default">PS1600</button>
-		  </div>
+	  	<div class="btn-group btn-group-justified" role="group" aria-label="..." id="testerType">
+			<script id="hpType" type="text/html">
+				{{each hp as value i}}
+				  <div class="btn-group" role="group">
+				    <button type="button" class="btn btn-default" id="{{value}}">{{value}}</button>
+				  </div>
+				{{/each}}
+			</script>
 		</div>
 	  </div>
-	  <div class="container" id="products" style="display: none">
-		  <div class="panel panel-default">
-			  <div class="panel-body">
-				<ul>
-				    {{each list as value i}}
-				        <li>No. {{i + 1}} ：{{value}}</li>
-				    {{/each}}
-				</ul>
-			  </div>
+	  
+	  <!-- product list here -->
+	  <div class="panel panel-default container product" id="product">
+		  <div class="panel-body">
+		    <div class="row" id="productShow">
+		    	<script id="productName" type="text/html">
+		    		{{each nickName as value i}}
+				    	<div class="col-xs-6 col-sm-3" style="padding: 10px;">
+					    	<a class="btn btn-default btn-lg btn-block" href="#" role="button" id="{{value}}">{{value}}</a>
+				    	</div>
+		    		{{/each}}
+		    	</script>
+		    </div>
 		  </div>
 	  </div>
+	  
+	  <!-- binning list here -->
+	  <div class="panel panel-default container" id="binning">
+	  	<div class="panel-body">
+	  		<div class="row" id="hbinShow">
+	  			<script id="hbin" type="text/html">
+	  				{{each hbin as value i}}
+	  					<div class="col-xs-4 col-sm-2" style="padding: 10px;">
+	  						<a class="btn btn-danger btn-lg btn-block" href="#" role="button" id="{{value}}">HBin {{value}}</a>
+	  					</div>
+	  				{{/each}}
+	  			</script>
+	  		</div>
+	  	</div>
+	  </div>
+	  
+	  <!-- maintain method or solution here -->
+	  <div class="panel panel-default container" id="maintain">
+	  	<div class="panel-body">
+	  		maintain detail will display here...
+	  	</div>
+	  </div>
     </div>
-	</script>
 
 
     <footer>
@@ -104,12 +120,18 @@
 <!-- template data here -->
 <script>
 var data = {
-    title: 'HP Tester Plat',
-    list: ['Anguilla IMM', 'Anguilla Blue', 'Anguilla Black', 'Anguilla Auto', 'Aruba', 'Bahamas', 'Baja',
-    		'Hockenheim Auto', 'Hockenheim IMM', ]
+    // title: 'HP Tester Plat',
+    nickName: ['Anguilla IMM', 'Anguilla Blue', 'Anguilla Black', 'Anguilla Auto', 'Aruba', 'Bahamas', 'Baja',
+    		'Hockenheim Auto', 'Hockenheim IMM'],
+    hp:['C400','PS800','PS1600'],
+    hbin:[2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
 };
-var html = template('test', data);
-document.getElementById('productList').innerHTML = html;
+var html = template('hpType', data);
+document.getElementById('testerType').innerHTML = html;
+var html=template('productName', data);
+document.getElementById('productShow').innerHTML=html;
+var html = template('hbin', data);
+document.getElementById('hbinShow').innerHTML = html;
 </script>
 
 </html>
