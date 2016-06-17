@@ -52,26 +52,24 @@
     </header>
     
 	<!-- display content here -->
-    <div class="container productList">
+    <div class="container" style="margin-bottom:50px;">
       <div class="page-header">
 		  <h1 class="container">HP Tester Plat <small>product list</small></h1>
 	  </div>
 	  
 	  <!-- tester type here -->
 		<div class="btn-group btn-group-justified" role="group" aria-label="..." id="testerType">
-		  <div class="btn-group" role="group">
-		    <button type="button" class="btn btn-lg btn-info" id="C400" value="C400">C400</button>
-		  </div>
-		  <div class="btn-group" role="group">
-		    <button type="button" class="btn btn-lg btn-info" id="PS800" value="PS800">PS800</button>
-		  </div>
-		  <div class="btn-group" role="group">
-		    <button type="button" class="btn btn-lg btn-info" id="PS1600" value="PS1600">PS1600</button>
-		  </div>
+			<script id="testerTypeShow" type="text/html">
+				{{each testerType as value i}}
+				  <div class="btn-group" role="group">
+				    <button type="button" class="btn btn-lg btn-info" id="{{value}}">{{value}}</button>
+				  </div>
+				{{/each}}
+			</script>
 		</div>
 	  
 	  <!-- product list here -->
-	  <div class="panel panel-default product" id="product">
+	  <div class="panel panel-default" id="product" style="margin-top: 30px;">
 	  	<div class="panel-heading">
 		    <h3 class="panel-title">Products</h3>
 		</div>
@@ -129,6 +127,8 @@
 </body>
 
 <script>
+	var html=template('testerTypeShow', data);
+	document.getElementById('testerType').innerHTML=html;
 	var html=template('productName', data);
 	document.getElementById('productShow').innerHTML=html;
 	var html = template('hbin', data);
