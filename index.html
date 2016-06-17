@@ -46,32 +46,35 @@
 			生活不止眼前的苟且，还有青丝绾正和十里红妆。<br />
 			生活不止眼前的苟且，还有金戈铁马和温酒的厨娘。
 		  </p>
-		  <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button" id="start">STATR</a></p> -->
+		  <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button" id="start">login</a></p> -->
       	</div>
 	  </div>
     </header>
     
 	<!-- display content here -->
-    <div class="productList">
+    <div class="container productList">
       <div class="page-header">
 		  <h1 class="container">HP Tester Plat <small>product list</small></h1>
 	  </div>
 	  
 	  <!-- tester type here -->
-	  <div class="container" id="type">
-	  	<div class="btn-group btn-group-justified" role="group" aria-label="..." id="testerType">
-			<script id="hpType" type="text/html">
-				{{each hp as value i}}
-				  <div class="btn-group" role="group">
-				    <button type="button" class="btn btn-default" id="{{value}}">{{value}}</button>
-				  </div>
-				{{/each}}
-			</script>
+		<div class="btn-group btn-group-justified" role="group" aria-label="..." id="testerType">
+		  <div class="btn-group" role="group">
+		    <button type="button" class="btn btn-lg btn-info" id="C400" value="C400">C400</button>
+		  </div>
+		  <div class="btn-group" role="group">
+		    <button type="button" class="btn btn-lg btn-info" id="PS800" value="PS800">PS800</button>
+		  </div>
+		  <div class="btn-group" role="group">
+		    <button type="button" class="btn btn-lg btn-info" id="PS1600" value="PS1600">PS1600</button>
+		  </div>
 		</div>
-	  </div>
 	  
 	  <!-- product list here -->
-	  <div class="panel panel-default container product" id="product">
+	  <div class="panel panel-default product" id="product">
+	  	<div class="panel-heading">
+		    <h3 class="panel-title">Products</h3>
+		</div>
 		  <div class="panel-body">
 		    <div class="row" id="productShow">
 		    	<script id="productName" type="text/html">
@@ -86,7 +89,10 @@
 	  </div>
 	  
 	  <!-- binning list here -->
-	  <div class="panel panel-default container" id="binning">
+	  <div class="panel panel-danger" id="binning">
+	  	<div class="panel-heading">
+		    <h3 class="panel-title">Fail Hard Bin List</h3>
+		</div>
 	  	<div class="panel-body">
 	  		<div class="row" id="hbinShow">
 	  			<script id="hbin" type="text/html">
@@ -101,11 +107,16 @@
 	  </div>
 	  
 	  <!-- maintain method or solution here -->
-	  <div class="panel panel-default container" id="maintain">
-	  	<div class="panel-body">
-	  		maintain detail will display here...
-	  	</div>
+	  <div class="panel panel-primary" id="maintain">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">TPE - Desiree Yu</h3>
+		  </div>
+		  <div class="panel-body">
+		    maintain solution here ...
+		  </div>
+		  <div class="panel-footer">This item is updated in 2016-06-17 13:40:17</div>
 	  </div>
+	  
     </div>
 
 
@@ -117,21 +128,11 @@
   </div>
 </body>
 
-<!-- template data here -->
 <script>
-var data = {
-    // title: 'HP Tester Plat',
-    nickName: ['Anguilla IMM', 'Anguilla Blue', 'Anguilla Black', 'Anguilla Auto', 'Aruba', 'Bahamas', 'Baja',
-    		'Hockenheim Auto', 'Hockenheim IMM'],
-    hp:['C400','PS800','PS1600'],
-    hbin:[2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
-};
-var html = template('hpType', data);
-document.getElementById('testerType').innerHTML = html;
-var html=template('productName', data);
-document.getElementById('productShow').innerHTML=html;
-var html = template('hbin', data);
-document.getElementById('hbinShow').innerHTML = html;
+	var html=template('productName', data);
+	document.getElementById('productShow').innerHTML=html;
+	var html = template('hbin', data);
+	document.getElementById('hbinShow').innerHTML = html;
 </script>
 
 </html>
